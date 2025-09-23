@@ -17,11 +17,11 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-family: 'Playfair Display', serif; /* 👈 updated font */
+      font-family: 'Playfair Display', serif;
       color: white;
       text-align: center;
-      background: #222; /* fallback background */
-      background-image: url("websitebackground.png"); /* 👈 change this */
+      background: #222;
+      background-image: url("websitebackground.png"); /* 👈 your custom background */
       background-size: cover;
       background-position: center;
     }
@@ -30,6 +30,14 @@
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 15px;
+    }
+    #countdown a {
+      color: #ffcc00; /* 👈 highlight link */
+      text-decoration: none;
+      font-weight: bold;
+    }
+    #countdown a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -45,7 +53,8 @@
       const distance = targetDate - now;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerText = "https://youtu.be/1aziU3TFKrM";
+        document.getElementById("countdown").innerHTML =
+          '<a href="https://youtu.be/1aziU3TFKrM" target="_blank">Watch Now</a>';
         return;
       }
 
@@ -58,9 +67,9 @@
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
+    // ✅ Run immediately + update every second
+    updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
-
-
