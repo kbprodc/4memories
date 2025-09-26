@@ -5,7 +5,6 @@
   <title>Brighter Days are Ahead</title>
 
   <style>
-    /* 👇 Import your custom font (from same folder as index.html) */
     @font-face {
       font-family: "Karrilee";
       src: url("KarrileeRegular.woff") format("woff");
@@ -20,11 +19,11 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-family: "Karrilee", serif; /* 👈 use your custom font */
+      font-family: "Karrilee", serif;
       color: white;
       text-align: center;
       background: #222;
-      background-image: url("websitebg.gif"); /* 👈 your custom background */
+      background-image: url("websitebg.gif");
       background-size: cover;
       background-position: center;
     }
@@ -33,31 +32,44 @@
       background: rgba(0, 0, 0, 0.6);
       padding: 20px;
       border-radius: 15px;
+      z-index: 1;
     }
-    #countdown a {
-      color: #ffcc00; /* 👈 highlight link */
-      text-decoration: none;
-      font-weight: bold;
+    /* 👇 Fullscreen image with fade-in effect */
+    #endImage {
+      opacity: 0;                /* hidden at start */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 2;
+      transition: opacity 2s ease-in; /* fade in over 2s */
+      pointer-events: none; /* prevent interaction while hidden */
     }
-    #countdown a:hover {
-      text-decoration: underline;
+    #endImage.show {
+      opacity: 1;               /* fade to visible */
+      pointer-events: auto;     /* clickable when visible */
     }
   </style>
 </head>
 <body>
   <div id="countdown">00d 00h 00m 00s</div>
+  <!-- 👇 Hidden image -->
+  <img id="endImage" src="endpicture.png" alt="Countdown Ended">
 
   <script>
     // 👇 Set your target date/time here
-    const targetDate = new Date("2025-09-26T20:40:00Z").getTime(); 
+    const targetDate = new Date("2025-09-26T07:32:00Z").getTime(); 
 
     function updateCountdown() {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        document.getElementById("countdown").innerHTML =
-          '<a href="https://youtu.be/1aziU3TFKrM" target="_blank">Watch Now</a>';
+        // Hide the countdown
+        document.getElementById("countdown").style.display = "none";
+        // Show the fullscreen image with fade-in
+        document.getElementById("endImage").classList.add("show");
         return;
       }
 
@@ -70,12 +82,12 @@
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    // ✅ Run immediately + update every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
+
 
 
 
