@@ -4,12 +4,15 @@
   <meta charset="UTF-8">
   <title>Brighter Days are Ahead</title>
 
-  <!-- 👇 Google Fonts: Playfair Display -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-
   <style>
+    /* 👇 Import your custom font (from same folder as index.html) */
+    @font-face {
+      font-family: "Karrilee";
+      src: url("KarrileeRegular.woff") format("woff");
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
       height: 100vh;
@@ -17,7 +20,7 @@
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      font-family: 'Playfair Display', serif;
+      font-family: "Karrilee", serif; /* 👈 use your custom font */
       color: white;
       text-align: center;
       background: #222;
@@ -46,7 +49,7 @@
 
   <script>
     // 👇 Set your target date/time here
-    const targetDate = new Date("2025-09-23T20:40:00Z").getTime(); 
+    const targetDate = new Date("2025-09-26T20:40:00Z").getTime(); 
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -73,6 +76,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
